@@ -8,6 +8,8 @@ class ExampleWebApplicationTests {
 
     @Test
     void contextLoads() {
+       int i = 0;
+       double y = 5634/i;
     }
 
 }

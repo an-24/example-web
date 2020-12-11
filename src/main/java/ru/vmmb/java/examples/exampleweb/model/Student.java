@@ -1,6 +1,9 @@
 package ru.vmmb.java.examples.exampleweb.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Entity
@@ -13,9 +16,11 @@ public class Student {
     private Integer id;
 
     @Column(name = "STUDENT_NAME", length = 30,nullable = false)
+    @NotBlank(message = "Требуется имя")
     private String name;
 
     @Column(name = "STUDENT_SURNAME", length = 100,nullable = false)
+    @NotBlank(message = "Требуется фамилия")
     private String surname;
 
     @Column(name = "STUDENT_MNAME", length = 60,nullable = true)
@@ -26,6 +31,7 @@ public class Student {
 
     @Column(name = "STUDENT_BDATE", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private Date bdate;
 
     public Student() {

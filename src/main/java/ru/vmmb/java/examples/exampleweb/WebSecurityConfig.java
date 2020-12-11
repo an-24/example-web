@@ -13,8 +13,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import ru.vmmb.java.examples.exampleweb.services.UserDetailService;
 
 
-xascw.jkwief+7
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.vmmb.java.examples.exampleweb.model.Student;
 import ru.vmmb.java.examples.exampleweb.repo.StudentRepository;
@@ -16,6 +17,7 @@ import ru.vmmb.java.examples.exampleweb.repo.StudentRepository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.PersistenceContext;
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 
@@ -76,8 +78,14 @@ public class StudentController {
 
     @PostMapping("/poststudent")
     @Transactional(propagation = Propagation.REQUIRED)
-    public String postStudent(@ModelAttribute Student student, Model model) {
+    public String postStudent(@Valid @ModelAttribute Student student, BindingResult result, Model model) {
         logger.info(student.toString());
+
+        if(result.hasErrors()) {
+            logger.error(result.getAllErrors().toString());
+            return "students/add";
+        }
+
         studentRepository.saveAndFlush(student);
         return "redirect:/students";
     }

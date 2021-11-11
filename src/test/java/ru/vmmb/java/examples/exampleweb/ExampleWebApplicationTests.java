@@ -14,12 +14,6 @@ class ExampleWebApplicationTests {
     @Test
     void contextLoads() {
         try {
-            //Method m1 = Example1.class.getMethod("get");
-               //Example1.class.getAnnotation()
-
-            //Class<? extends Class> cls = Example1.class.getClass();
-            //m1 = cls.getMethod("method1");
-
         } catch (Exception ex) {
             ex.printStackTrace();
         }

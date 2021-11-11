@@ -79,6 +79,7 @@ public class StudentController {
     @PostMapping("/poststudent")
     @Transactional(propagation = Propagation.REQUIRED)
     public String postStudent(@Valid @ModelAttribute Student student, BindingResult result, Model model) {
+        logger.info("Post student...");
         logger.info(student.toString());
 
         if(result.hasErrors()) {
